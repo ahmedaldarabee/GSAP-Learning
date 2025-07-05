@@ -65,12 +65,45 @@
     //  box 1: 2s
         // then we will delay 2s then the box 2 it will work and same idea with box3
 
-gsap.to(".box",2,{
+// gsap.to(".box",2,{
+//     x:600,
+//     rotation:50,
+//     borderRadius:50,
+//     scale:1.5,
+//     yoyo:true,
+//     repeat:3,
+//     ease: "bounce.out",
+// })
+
+// ---------------- Scroll Trigger ----------------- //
+gsap.registerPlugin(ScrollTrigger) 
+
+// gsap.to(".box",4,{
+
+//     scrollTrigger:{
+//         trigger:".box",
+//         start:"top top",
+//         scrub:true,
+//         markers:true
+//     },
+//     scale:1.5,
+//     rotation:360,
+//     x:900,
+//     borderRadius:70
+// })
+
+// [.box] sub it will have these effect once parent [.section] do action
+
+gsap.to(".box",4,{
+    scrollTrigger:{
+        trigger:".section",
+        pin:true,
+        start:"top top",
+        end:"+=500",
+        scrub:true
+    },
     x:600,
-    rotation:50,
-    borderRadius:50,
-    scale:1.5,
-    yoyo:true,
-    repeat:3,
-    ease: "bounce.out",
+    rotation:360,
+    scale:0.4,
+    borderRadius:90
 })
