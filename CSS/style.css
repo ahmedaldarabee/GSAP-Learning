@@ -1,6 +1,22 @@
+*{
+    box-sizing: border-box;
+}
 
 .box{
     width: 100px;
     height: 100px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+.box:nth-child(1){
     background-color: red;
+}
+
+.box:nth-child(2){
+    background-color: green;
+}
+
+.box:nth-child(3){
+    background-color: blue;
 }
