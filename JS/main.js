@@ -76,7 +76,7 @@
 // })
 
 // ---------------- Scroll Trigger ----------------- //
-gsap.registerPlugin(ScrollTrigger) 
+// gsap.registerPlugin(ScrollTrigger) 
 
 // gsap.to(".box",4,{
 
@@ -94,16 +94,60 @@ gsap.registerPlugin(ScrollTrigger)
 
 // [.box] sub it will have these effect once parent [.section] do action
 
-gsap.to(".box",4,{
-    scrollTrigger:{
-        trigger:".section",
-        pin:true,
-        start:"top top",
-        end:"+=500",
-        scrub:true
-    },
-    x:600,
-    rotation:360,
-    scale:0.4,
-    borderRadius:90
+// gsap.to(".box",4,{
+//     scrollTrigger:{
+//         trigger:".section",
+//         pin:true,
+//         start:"top top",
+//         end:"+=500",
+//         scrub:true
+//     },
+//     x:600,
+//     rotation:360,
+//     scale:0.4,
+//     borderRadius:90
+// })
+
+gsap.registerPlugin(SplitText);
+const mainHeadLine = document.querySelector(".main-headline");
+const tagline = document.querySelector(".tagline");
+
+const splitHeadLine = new SplitText(mainHeadLine,{
+    type:"words,chars"
+});
+
+const splitTagLine = new SplitText(tagline,{
+    type:"words"
+})
+
+const tl = gsap.timeline();
+
+tl.from(splitHeadLine.chars,{
+    x:200,
+    rotationX:190,
+    opacity:0,
+    color:"#ffffff",
+    transformOrigin:"center center",
+    stagger: 0.2,
+})
+
+tl.to(splitHeadLine.chars,{
+    color:"#6c5ce7",
+    duration:0.9,
+    ease:"power2.out",
+    stagger: 0.2,
+    // repeat:5,
+})
+
+tl.from(splitTagLine.words, {
+    y:60,
+    opacity:0,
+    filter:"blur(16px)",
+    duration:0.7,
+    stagger:0.12,
+    ease:"power3.out",
+},'+=1.2')
+
+tl.to(splitTagLine.words,{
+    filter:"blur(0px)",
 })
